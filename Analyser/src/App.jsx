@@ -11,6 +11,7 @@ function App() {
   const [monthlyRent, setMonthlyRent] = useState(0);
   const [monthlyExpenses, setMonthlyExpenses] = useState(0);
   const [propertyValue, setPropertyValue] = useState(0);
+  const [totalInvestment, setTotalInvestment] = useState(0);
 
   return (
     <div className="w-full h-screen grid grid-cols-2 grid-rows-2">
@@ -21,6 +22,8 @@ function App() {
         setMonthlyRent={setMonthlyRent}
         propertyValue={propertyValue}
         setPropertyValue={setPropertyValue}
+        totalInvestment={totalInvestment}
+        setTotalInvestment={setTotalInvestment}
       />
       <MonthlyExspenses
         monthlyExpenses={monthlyExpenses}
@@ -36,6 +39,7 @@ function App() {
         monthlyExpenses={monthlyExpenses}
         propertyValue={propertyValue}
         monthlyMortgage={monthlyMortgage}
+        totalInvestment={totalInvestment}
       />
     </div>
   );

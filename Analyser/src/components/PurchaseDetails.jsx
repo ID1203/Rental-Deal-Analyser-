@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MoneyInput from "./MoneyInput";
 
-const PurchaseDetials = ({
+const PurchaseDetails = ({
   purchasePrice,
   setPurchasePrice,
   monthlyRent,
   setMonthlyRent,
   propertyValue,
   setPropertyValue,
+  totalInvestment,
+  setTotalInvestment,
 }) => {
   const [refurb, setRefurb] = useState(0);
   const [stampDuty, setStampDuty] = useState(0);
   const [closingCost, setClosingCost] = useState(0);
+
+  useEffect(() => {
+    const newTotal = [purchasePrice, refurb, stampDuty, closingCost]
+      .reduce((acc, current) => acc + (parseFloat(current) || 0), 0)
+      .toFixed(2);
+    setTotalInvestment(newTotal);
+  }, [purchasePrice, refurb, stampDuty, closingCost]);
 
   const handlePurchasePriceChange = (event) =>
     setPurchasePrice(event.target.value);
@@ -21,20 +30,9 @@ const PurchaseDetials = ({
   const handleRefurbChange = (event) => setRefurb(event.target.value);
   const handleStampDutyChange = (event) => setStampDuty(event.target.value);
 
-  const handleNumericChange = (setter) => (event) => {
-    const value = parseFloat(event.target.value) || 0;
-    setter(value);
-  };
-
-  const calculateTotal = () => {
-    return [purchasePrice, refurb, stampDuty, closingCost]
-      .reduce((acc, current) => acc + (parseFloat(current) || 0), 0)
-      .toFixed(2);
-  };
-
   return (
     <div className="border-4 border-black rounded-lg p-4 m-4 flex flex-col  w-200 h-200">
-      <h2 className="text-xl font-bold mb-4">Purchase Detials</h2>
+      <h2 className="text-xl font-bold mb-4">Purchase Details</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <MoneyInput
           name="Purchase Price"
@@ -68,10 +66,10 @@ const PurchaseDetials = ({
         />
       </div>
       <div className="text-xl font-bold pt-10 mb-4">
-        Total = £{calculateTotal()}
+        Total Investment = £{totalInvestment}
       </div>
     </div>
   );
 };
 
-export default PurchaseDetials;
+export default PurchaseDetails;

@@ -32,7 +32,7 @@ const MonthlyExpenses = ({ monthlyExpenses, setMonthlyExpenses }) => {
   ]);
 
   return (
-    <div className="border-4 border-black rounded-lg p-4 m-4 flex flex-col">
+    <div className="bg-white rounded-lg p-4 m-4 flex flex-col">
       <h2 className="text-xl font-bold mb-4">Monthly Operating Expenses</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <MoneyInput

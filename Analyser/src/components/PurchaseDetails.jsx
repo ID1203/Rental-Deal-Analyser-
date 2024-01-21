@@ -31,7 +31,7 @@ const PurchaseDetails = ({
   const handleStampDutyChange = (event) => setStampDuty(event.target.value);
 
   return (
-    <div className="border-4 border-black rounded-lg p-4 m-4 flex flex-col  w-200 h-200">
+    <div className="rounded-lg p-4 m-4 flex flex-col  w-200 h-200 bg-white">
       <h2 className="text-xl font-bold mb-4">Purchase Details</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <MoneyInput

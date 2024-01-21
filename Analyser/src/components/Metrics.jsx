@@ -19,7 +19,7 @@ const Metrics = ({
     ? annualCashFlow / annualMortgagePayment
     : 0;
   return (
-    <div className="border-4 border-black rounded-lg p-4 m-4 flex flex-col w-200 h-200">
+    <div className="bg-white rounded-lg p-4 m-4 flex flex-col w-200 h-200">
       <h2 className="text-xl font-bold mb-4">Metrics</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <p className="text-lg font-semibold">

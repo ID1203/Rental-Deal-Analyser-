@@ -66,7 +66,7 @@ const LoanDetails = ({
   }, [loanRequired, mortgageRate, mortgageTerm, setMonthlyMortgage]);
 
   return (
-    <div className="border-4 border-black rounded-lg p-4 m-4 flex flex-col">
+    <div className="bg-white rounded-lg p-4 m-4 flex flex-col">
       <h2 className="text-xl font-bold mb-4">Loan Details</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <MoneyInput

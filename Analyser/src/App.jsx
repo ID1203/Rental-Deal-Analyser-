@@ -1,47 +1,33 @@
 import { useState } from "react";
 import "./App.css";
-import LoanDetails from "./components/LoanDetails";
-import Metrics from "./components/Metrics";
-import MonthlyExspenses from "./components/MonthlyExspenses";
-import PurchaseDetails from "./components/purchaseDetails";
+import Header from "./components/Header";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
+import { Home } from "./components/Home";
+import Projects from "./Projects";
+import Finder from "./components/Finder";
 
 function App() {
-  const [purchasePrice, setPurchasePrice] = useState(0);
-  const [monthlyMortgage, setMonthlyMortgage] = useState(0);
-  const [monthlyRent, setMonthlyRent] = useState(0);
-  const [monthlyExpenses, setMonthlyExpenses] = useState(0);
-  const [propertyValue, setPropertyValue] = useState(0);
-  const [totalInvestment, setTotalInvestment] = useState(0);
-
+  const houseData = {
+    imageUrl: "url_of_the_house_image.jpg",
+    address: "1234 Main St, Anytown, USA",
+    price: 350000,
+  };
   return (
-    <div className="w-full h-screen grid grid-cols-2 grid-rows-2">
-      <PurchaseDetails
-        purchasePrice={purchasePrice}
-        setPurchasePrice={setPurchasePrice}
-        monthlyRent={monthlyRent}
-        setMonthlyRent={setMonthlyRent}
-        propertyValue={propertyValue}
-        setPropertyValue={setPropertyValue}
-        totalInvestment={totalInvestment}
-        setTotalInvestment={setTotalInvestment}
-      />
-      <MonthlyExspenses
-        monthlyExpenses={monthlyExpenses}
-        setMonthlyExpenses={setMonthlyExpenses}
-      />
-      <LoanDetails
-        purchasePrice={purchasePrice}
-        monthlyMortgage={monthlyMortgage}
-        setMonthlyMortgage={setMonthlyMortgage}
-      />
-      <Metrics
-        monthlyRent={monthlyRent}
-        monthlyExpenses={monthlyExpenses}
-        propertyValue={propertyValue}
-        monthlyMortgage={monthlyMortgage}
-        totalInvestment={totalInvestment}
-      />
-    </div>
+    <Router>
+      <div className="w-full h-screen">
+        <Header />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/projects" element={<Projects house={houseData} />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/finder" element={<Finder />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
